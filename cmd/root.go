@@ -18,9 +18,9 @@ var rootCmd = &cobra.Command{
 	Long: `A simple yet intutive and easy to use cli for managing startup applications on windows.
 
 For example:
-  sm add <app name> <app path>
-  sm remove <app name>
-  sm ls
+  starman add <app name> <app path>
+  starman remove <app name>
+  starman ls
 `,
 }
 
