@@ -6,13 +6,10 @@ package cmd
 
 import (
 	"fmt"
-
 	"github.com/elliot40404/starman/env"
-	// "fmt"
+	"github.com/spf13/cobra"
 	"regexp"
 	"strings"
-
-	"github.com/spf13/cobra"
 )
 
 type App = env.APP
@@ -33,7 +30,8 @@ For example:
 			if regexp.MustCompile(`APP`).MatchString(config) {
 				name := strings.Split(regexp.MustCompile(`@R.+`).FindString(config), "APP")[1]
 				path := strings.Split(regexp.MustCompile(`ST.+`).FindString(config), "\"\"")[1]
-				apps = append(apps, App{Name: strings.Trim(name, " "), Path: strings.Trim(path, " ")})
+				disabled := regexp.MustCompile(`@REM START`).MatchString(config)
+				apps = append(apps, App{Name: strings.Trim(name, " "), IsDisabled: disabled, Path: strings.Trim(path, " ")})
 			}
 		}
 		if len(apps) == 0 {

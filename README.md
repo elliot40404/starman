@@ -23,6 +23,7 @@ A simple yet intuitive cli tool for managing windows start up applications.
 - [x] Add an application to startup
 - [x] Remove an application from startup
 - [x] List all applications in startup
+- [x] Enable or disable an application from startup
 
 ## LICENSE
 

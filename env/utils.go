@@ -32,9 +32,15 @@ func WRITE_FILE(data string) {
 func TABLE(data []APP) {
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"Name", "Path"})
+	t.AppendHeader(table.Row{"Name", "Status", "Path"})
 	for _, row := range data {
-		t.AppendRow(table.Row{row.Name, row.Path})
+		var status string
+		if row.IsDisabled {
+			status = "Disabled"
+		} else {
+			status = "Enabled"
+		}
+		t.AppendRow(table.Row{row.Name, status, row.Path})
 	}
 	t.SetStyle(table.StyleLight)
 	t.Render()

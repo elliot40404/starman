@@ -4,22 +4,30 @@ name: Generate release-artifacts
 # on events
 on:
   release:
-    types: 
-        - created
+    types:
+      - created
 
 # workflow tasks
 jobs:
-  generate:
+  zip:
     name: Generate windows binaries
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Generate build files
+      - name: Generate build files zip
         uses: thatisuday/go-cross-build@v1
         with:
-            platforms: 'windows/amd64, windows/386'
-            package: ''
-            name: 'starman'
-            compress: 'true'
-            dest: 'bin'
+          platforms: 'windows/amd64, windows/386'
+          package: ''
+          name: 'starman'
+          compress: 'true'
+          dest: 'dist'
+      - name: Generate build files bin
+        uses: thatisuday/go-cross-build@v1
+        with:
+          platforms: 'windows/amd64, windows/386'
+          package: ''
+          name: 'starman'
+          compress: 'false'
+          dest: 'dist'

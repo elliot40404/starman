@@ -3,6 +3,6 @@ package env
 type APP struct {
 	Name string
 	Path string
-	// isEnabled bool
+	IsDisabled bool
 	// delay int
 }
