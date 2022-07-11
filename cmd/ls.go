@@ -22,7 +22,6 @@ For example:
 	sm list`,
 	Aliases: []string{"l"},
 	Run: func(cmd *cobra.Command, args []string) {
-		// fmt.Println("LISTING CONFIG")
 		data := env.READ_FILE()
 		configs := regexp.MustCompile("(?m)"+`^@R.+\n.+`).FindAllString(data, -1)
 		apps := make([]App, 0)

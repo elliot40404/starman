@@ -21,10 +21,20 @@ func READ_FILE() string {
 	return string(file)
 }
 
-func WRITE_FILE(data string) {
+func WRITE_FINAL(data string) {
 	// write data to config file
 	err := ioutil.WriteFile(CONFIG_FILE(), []byte(data), 0644)
 	if err != nil {
+		panic(err)
+	}
+}
+
+func WRITE_FILE(data string) {
+	// write data to config file
+	err := ioutil.WriteFile(CONFIG_FILE(), []byte(data), 0644)
+	err2 := ioutil.WriteFile(STARTUP_FILE(), []byte(data), 0644)
+	if err != nil || err2 != nil {
+		WRITE_LOG(err.Error())
 		panic(err)
 	}
 }
@@ -44,4 +54,12 @@ func TABLE(data []APP) {
 	}
 	t.SetStyle(table.StyleLight)
 	t.Render()
+}
+
+func WRITE_LOG(data string) {
+	// write data to log file
+	err := ioutil.WriteFile(LOG_FILE(), []byte(data+"\n"), 0644)
+	if err != nil {
+		panic(err)
+	}
 }

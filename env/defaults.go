@@ -14,9 +14,18 @@ func HOMEDIR() string {
 	return fmt.Sprintf("%s\\.sm", home)
 }
 
+func LOG_FILE() string {
+	return fmt.Sprintf("%s\\sm_startup.log", HOMEDIR())
+}
+
 func STARTUP_DIR() string {
 	home, _ := os.UserHomeDir()
 	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup", home)
+}
+
+func STARTUP_FILE() string {
+	home, _ := os.UserHomeDir()
+	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\sm_startup.bat", home)
 }
 
 func CONFIG_FILE() string {

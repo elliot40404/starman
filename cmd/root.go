@@ -27,16 +27,17 @@ For example:
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
+		env.WRITE_LOG(err.Error())
 		os.Exit(1)
 	}
 }
 
 func init() {
-	//  TODO: add logging w/ log file in same home directory
 	// check for home directory
 	if _, err := os.Stat(env.HOMEDIR()); os.IsNotExist(err) {
 		err := os.Mkdir(env.HOMEDIR(), 0755)
 		if err != nil {
+			env.WRITE_LOG(err.Error())
 			panic(err)
 		}
 	}
@@ -44,23 +45,21 @@ func init() {
 	if _, err := os.Stat(env.CONFIG_FILE()); os.IsNotExist(err) {
 		_, err := os.Create(env.CONFIG_FILE())
 		if err != nil {
+			env.WRITE_LOG(err.Error())
 			panic(err)
 		}
-		// TODO: add privilege escalation for symlink
-		// err = os.Symlink(env.CONFIG_FILE(), env.STARTUP_DIR())
-		// if err != nil {
-		// 	panic(err)
-		// }
 	}
 	// check file contents - if empty, add default config
 	if _, err := os.Stat(env.CONFIG_FILE()); err == nil {
 		file, err := ioutil.ReadFile(env.CONFIG_FILE())
 		if err != nil {
+			env.WRITE_LOG(err.Error())
 			panic(err)
 		}
 		if len(file) == 0 {
 			err := ioutil.WriteFile(env.CONFIG_FILE(), []byte(env.CONFIG_FILE_DEFAULT()), 0644)
 			if err != nil {
+				env.WRITE_LOG(err.Error())
 				panic(err)
 			}
 		}
