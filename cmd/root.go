@@ -13,7 +13,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:     "starman",
-	Version: "v0.1.0-alpha",
+	Version: "v0.1.2",
 	Short:   "A cli tool for managing your start up applications",
 	Long: `A simple yet intutive and easy to use cli for managing startup applications on windows.
 
