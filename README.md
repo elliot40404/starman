@@ -7,7 +7,7 @@
 \__ \ || (_| | |  | | | | | | (_| | | | |
 |___/\__\__,_|_|  |_| |_| |_|\__,_|_| |_|
 
-v0.1.2
+v0.1.3
 ```
 
 A simple yet intuitive cli tool for managing windows start up applications.
