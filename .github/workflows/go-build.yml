@@ -23,11 +23,12 @@ jobs:
           name: 'starman'
           compress: 'true'
           dest: 'dist'
-      - name: Generate build files bin
+      - name: Setup GO env
         uses: actions/setup-go@v3
         with:
           go-version: '1.18.3'
-      - run: |
+      - name: Build go binaries
+        run: |
           go version
           GOOS=windows GOARCH=amd64 go build -ldflags "-w" -o starman-amd64.exe
           GOOS=windows GOARCH=386 go build -ldflags "-w" -o starman-i386.exe
