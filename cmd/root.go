@@ -64,4 +64,8 @@ func init() {
 			}
 		}
 	}
+	// check link file for startup applications
+	if _, err := os.Stat(env.STARTUP_FILE()); os.IsNotExist(err) {
+		ioutil.WriteFile(env.STARTUP_FILE(), []byte(env.STARTUP_FILE_DEFAULT()), 0644)
+	}
 }

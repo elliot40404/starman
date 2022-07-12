@@ -19,7 +19,7 @@ var lsCmd = &cobra.Command{
 	Short: "list all startup applications",
 	Long: `list all startup applications and their status.
 For example:
-	sm list`,
+	starman list`,
 	Aliases: []string{"l"},
 	Run: func(cmd *cobra.Command, args []string) {
 		data := env.READ_FILE()
@@ -34,7 +34,7 @@ For example:
 			}
 		}
 		if len(apps) == 0 {
-			fmt.Println("Startup list is empty! Start adding apps using `sm add`")
+			fmt.Println("Startup list is empty! Start adding apps using `starman add`")
 			return
 		}
 		env.TABLE(apps)

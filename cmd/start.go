@@ -6,9 +6,11 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
+
 	"github.com/elliot40404/starman/env"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 // startCmd represents the start command
@@ -21,8 +23,7 @@ For example:
 	Args: cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		if _, err := os.Stat(env.STARTUP_FILE()); err != nil {
-			data := env.READ_FILE()
-			env.WRITE_FILE(data)
+			ioutil.WriteFile(env.STARTUP_FILE(), []byte(env.STARTUP_FILE_DEFAULT()), 0644)
 			fmt.Println("Enabled starman to start apps on startup")
 		}
 	},

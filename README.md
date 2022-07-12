@@ -126,11 +126,9 @@ starman delay <delay_time>
 
 ## Defaults
 
-- Default delay time is 30 seconds
-
+- Default delay time is 10 seconds
 - Config file location is `HOMEDIR/.sm/sm_startup.bat`
-
-- When a new application is added, starman is automatically added to startup if disabled.
+- LOG file location is `HOMEDIR/.sm/sm_startup.log`
 
 ## LICENSE
 

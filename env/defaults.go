@@ -6,7 +6,7 @@ import (
 )
 
 const TIME_UNIT string = "Seconds"
-const DELAY int = 30
+const DELAY int = 10
 const COMMENT_CHAR string = "@REM"
 
 func HOMEDIR() string {
@@ -25,8 +25,17 @@ func STARTUP_DIR() string {
 
 func STARTUP_FILE() string {
 	home, _ := os.UserHomeDir()
-	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\sm_startup.bat", home)
+	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\sm_startup.vbs", home)
 }
+
+func STARTUP_FILE_DEFAULT() string {
+	return fmt.Sprintf("Set WshShell = CreateObject(\"WScript.Shell\")\nWshShell.Run chr(34) & \"%s\" & Chr(34), 0\nSet WshShell = Nothing", CONFIG_FILE())
+}
+
+// func STARTUP_FILE() string {
+// 	home, _ := os.UserHomeDir()
+// 	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\sm_startup.bat", home)
+// }
 
 func CONFIG_FILE() string {
 	return fmt.Sprintf("%s\\sm_startup.bat", HOMEDIR())

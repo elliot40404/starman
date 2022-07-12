@@ -32,8 +32,8 @@ func WRITE_FINAL(data string) {
 func WRITE_FILE(data string) {
 	// write data to config file
 	err := ioutil.WriteFile(CONFIG_FILE(), []byte(data), 0644)
-	err2 := ioutil.WriteFile(STARTUP_FILE(), []byte(data), 0644)
-	if err != nil || err2 != nil {
+	// err2 := ioutil.WriteFile(STARTUP_FILE(), []byte(data), 0644)
+	if err != nil {
 		WRITE_LOG(err.Error())
 		panic(err)
 	}
