@@ -18,6 +18,12 @@ A simple yet intuitive cli tool for managing windows start up applications.
  go install github.com/elliot40404/starman@latest
 ```
 
+Just run the below command in powershell
+
+```ps1
+ iwr shorturl.at/aeis7 -OutFile $pwd\starman.exe
+```
+
 [Find latest Release Here](https://github.com/elliot40404/starman/releases/latest)
 
 Or just download the binary from releases page and put it in your PATH.
