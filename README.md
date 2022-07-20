@@ -21,7 +21,7 @@ A simple yet intuitive cli tool for managing windows start up applications.
 Just run the below command in powershell
 
 ```ps1
- iwr shorturl.at/aeis7 -OutFile $pwd\starman.exe
+ iwr tinyurl.com/sstarman -OutFile $pwd\starman.exe
 ```
 
 [Find latest Release Here](https://github.com/elliot40404/starman/releases/latest)
