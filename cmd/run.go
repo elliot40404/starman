@@ -39,9 +39,13 @@ For example:
 			return
 		}
 		app := strings.Split(toRun, "\n")[1]
-		appPath := strings.Split(app, " ")[2]
-		run := exec.Command("powershell", "start", appPath)
-		run.Run()
+		appPath := strings.Split(app, " ")
+		newPath := appPath[len(appPath)-1]
+		run := exec.Command("powershell", "start", newPath)
+		err := run.Run()
+		if err != nil {
+			env.WRITE_LOG(err.Error())
+		}
 	},
 }
 
