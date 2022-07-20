@@ -51,6 +51,7 @@ Or just download the binary from releases page and put it in your PATH.
     starman stop
     starman delay
     starman delay <delay_time>
+    starman run <app_name>
     starman help
 ```
 
@@ -128,6 +129,15 @@ delay time is in seconds. Default is 30 seconds
 
 ```sh
 starman delay <delay_time>
+```
+
+### Run app using starman
+
+`run` is also aliased as `r`
+
+```sh
+starman run <app_name>
+starman r <app_name>
 ```
 
 ## Defaults

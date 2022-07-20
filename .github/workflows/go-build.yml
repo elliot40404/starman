@@ -27,12 +27,18 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.18.3'
-      - name: Build go binaries
+      - name: Check go version
         run: |
           go version
+      - name: Build 64-bit windows binaries
+        run: |
+          go mod tidy
           GOOS=windows GOARCH=amd64 go build -ldflags "-w" -o starman-amd64.exe
+          gh release upload $RELEASE_VERSION starman-amd64.exe
+      - name: Build 32-bit windows binaries
+        run: |
           GOOS=windows GOARCH=386 go build -ldflags "-w" -o starman-i386.exe
-          gh release upload $RELEASE_VERSION starman-amd64.exe starman-i386.exe
+          gh release upload $RELEASE_VERSION starman-i386.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
